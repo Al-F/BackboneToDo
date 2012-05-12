@@ -21,8 +21,17 @@ import restlet.resources.TodosResourse;
 public class RestletApp extends Application {
     
     /** The list of items is persisted in memory. */  
-    private final ConcurrentMap<Integer, Todo> todos =   
+    private static final ConcurrentMap<Integer, Todo> todos =   
             new ConcurrentHashMap<Integer, Todo>();
+    
+    static
+    {        
+        //insert todo for test
+        Todo todo = new Todo(1);        
+        todo.setDescription("Pick up milk");
+        todo.setStatus("incomplete");        
+        todos.put(todo.getId(), todo);
+    } 
     
     /**
      * Creates a root Restlet that will receive all incoming calls.
@@ -40,15 +49,8 @@ public class RestletApp extends Application {
         
         // Defines a route for the resource "item"  
         router.attach("/todos/{todoID}", TodoResourse.class);  
-        
-        //insert todo for test
-        Todo todo = new Todo();
-        todo.setId(1);
-        todo.setDescription("Pick up milk");
-        todo.setStatus("incomplete");        
-        todos.put(todo.getId(), todo);
 
-        return router;        
+        return router; 
     }
     
     /** 

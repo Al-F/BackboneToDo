@@ -4,7 +4,7 @@
  */
 
 //to create a model class with restful
-var TodoItem = Backbone.Model.extend({urlRoot: '/todos'});
+var TodoItem = Backbone.Model.extend({urlRoot: 'api/todos'});
 
 //to create a model instance
 //var todoItem = new TodoItem(
@@ -16,5 +16,6 @@ var todoItem = new TodoItem({id: 1});
 
 todoItem.fetch();
 
+todoItem.set({description: 'Pick up cookies.'});
 
-
+todoItem.save();

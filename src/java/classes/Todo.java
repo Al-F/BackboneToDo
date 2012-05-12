@@ -16,6 +16,10 @@ public class Todo {
      private String description;
      private String status;
      
+     public Todo(int id){
+         this.id = id;
+     }
+     
      /**
      * @return json string
      */
@@ -34,13 +38,6 @@ public class Todo {
      */
     public int getId() {
         return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
     }
 
     /**
