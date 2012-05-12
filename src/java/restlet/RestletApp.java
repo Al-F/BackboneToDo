@@ -23,15 +23,16 @@ public class RestletApp extends Application {
     /** The list of items is persisted in memory. */  
     private static final ConcurrentMap<Integer, Todo> todos =   
             new ConcurrentHashMap<Integer, Todo>();
+    private static int id = 1;
     
     static
     {        
         //insert todo for test
-        Todo todo = new Todo(1);        
+        Todo todo = new Todo(id++);        
         todo.setDescription("Pick up milk");
         todo.setStatus("incomplete");        
         todos.put(todo.getId(), todo);
-    } 
+    }
     
     /**
      * Creates a root Restlet that will receive all incoming calls.
@@ -54,11 +55,22 @@ public class RestletApp extends Application {
     }
     
     /** 
-     * Returns the list of registered items. 
+     * Returns the list of registered todo. 
      *  
-     * @return the list of registered items. 
+     * @return the list of registered todo. 
      */  
     public ConcurrentMap<Integer, Todo> getTodos() {  
         return todos;  
-    }  
+    }
+    
+     /** 
+     * Create new todo with unique id
+     *  
+     * @return the created todo
+     */  
+    public Todo createTodo(){
+        Todo todo = new Todo(id++);
+        todos.put(todo.getId(), todo);
+        return todo;
+    }
 }
