@@ -1,16 +1,14 @@
 
-//load when dom is ready (jquery)
-$(function(){
     //create a view class
     var TodoView = Backbone.View.extend({
         tagName: 'article',
         id: 'todo-view',
         className: 'todo',
         //configure underscore template
-        template: _.template('<h3 class="<%= status %>"><input type=checkbox ' +
-            '<% if(status === "complete") print("checked") %>/>' + '<%= description %> <i class="icon-remove-sign"></i></h3>'),
+        template: _.template('<div class="todo-item"><button class="close">×</button><strong class="checbox <%= status %>"><input type=checkbox ' +
+            '<% if(status === "complete") print("checked") %>/>' + ' <%= description %></strong></div>'),
         events: {            
-            'click .icon-remove-sign' : 'onRemove',
+            'click button.close' : 'onRemove',            
             'change input': 'toggleStatus'
         },
         initialize: function(){
@@ -32,12 +30,12 @@ $(function(){
     });
 
     //create a list view class
-    var TodoListView = Backbone.View.extend({    
+    var TodoListView = Backbone.View.extend({        
         initialize: function(){
             //subscribe on events when initialized
             this.collection.on('add', this.addOne, this);
             this.collection.on('reset', this.addAll, this);        
-        },    
+        },  
         render: function(){
             this.addAll();
             return this;
@@ -52,11 +50,34 @@ $(function(){
             this.collection.forEach(this.addOne, this);
         }
     });
+    
+    //create a  view class
+    var TopView = Backbone.View.extend({    
+        events: {            
+            'click #add-todo' : 'addTodo'           
+        },        
+        addTodo: function(){
+            var desc = $('#todo-desc').val();
+            $('#todo-desc').val("");
+            var todo = new TodoItem();            
+            todo.set({"description": desc});
+            this.collection.add(todo);
+        }
+    });
 
     //create a instance of list view class
-    var todoListView = new TodoListView({
+    var todoListView;
+    var topView;
+    
+//load when dom is ready (jquery)
+$(function(){   
+    topView = new TopView({
         collection: todoList,
-        //bind instance to #todos element
-        el : $('#todos')
-    });
+        el: $('.form-inline')
+    })
+    todoListView = new TodoListView({
+        collection: todoList,
+        el: $('#todos')
+    });    
 });
+

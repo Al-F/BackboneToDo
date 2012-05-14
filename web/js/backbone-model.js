@@ -28,6 +28,4 @@ var TodoList = Backbone.Collection.extend({
 
 //create a instance of list
 var todoList = new TodoList();
-
-//fetch with data
 todoList.fetch();

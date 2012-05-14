@@ -18,10 +18,16 @@
         <script src="js/backbone-model.js"></script>
         <script src="js/backbone-view.js"></script>
     </head>
-    <body>
-        <h1>Todo list</h1>
-        <div id="todos">
-            <div></div>
+    <body>         
+        <div class="container">
+            <h1>Todo list</h1>
+            <form class="well form-inline">
+                <input type="text" class="input-xxlarge" id="todo-desc" placeholder="What need to do?">                
+                <div class="btn btn-primary" id="add-todo">Add todo</div>
+            </form>
+            <div id="todos" class="todo-list">
+                <div></div>
+            </div>
         </div>
     </body>
 </html>
