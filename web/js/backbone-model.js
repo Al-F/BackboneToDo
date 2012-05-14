@@ -1,7 +1,3 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 //create a model class with restful
 var TodoItem = Backbone.Model.extend({
@@ -12,9 +8,13 @@ var TodoItem = Backbone.Model.extend({
     },
     toggleStatus: function(){
         if(this.get('status') === 'incomplete'){
-            this.set({'status': 'complete'});
+            this.set({
+                'status': 'complete'
+            });
         }else{
-            this.set({'status': 'incomplete'});
+            this.set({
+                'status': 'incomplete'
+            });
         }
         this.save();
     }

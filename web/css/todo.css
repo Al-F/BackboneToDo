@@ -11,4 +11,6 @@
     text-decoration: line-through;
 }
 
-
+.todo {
+    color: #f00;
+}

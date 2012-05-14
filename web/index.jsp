@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>TODO</title>
         <link href="css/todo.css" rel="stylesheet">
+        <link href="css/bootstrap.css" rel="stylesheet">
         <script src="js/jscore/jquery-1.7.2.js"></script>
         <script src="js/jscore/underscore.js"></script>
         <script src="js/jscore/backbone.js"></script>
