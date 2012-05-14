@@ -28,9 +28,19 @@ public class Todo {
          object.addProperty("id", id);
          object.addProperty("description", description);
          object.addProperty("status", status);
-         
          Gson gson = new Gson();
          return gson.toJson(object);
+     }
+     
+          /**
+     * @return json object
+     */
+     public JsonObject toJsonObject(){
+         JsonObject object = new JsonObject();
+         object.addProperty("id", id);
+         object.addProperty("description", description);
+         object.addProperty("status", status);
+         return object;
      }
 
     /**

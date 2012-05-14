@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>TODO</title>
+        <link href="css/todo.css" rel="stylesheet">
         <script src="js/jscore/jquery-1.7.2.js"></script>
         <script src="js/jscore/underscore.js"></script>
         <script src="js/jscore/backbone.js"></script>
@@ -17,7 +18,9 @@
         <script src="js/backbone-view.js"></script>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <div id="test"><div>
+        <h1>Todo list</h1>
+        <div id="todos">
+            <div></div>
+        </div>
     </body>
 </html>

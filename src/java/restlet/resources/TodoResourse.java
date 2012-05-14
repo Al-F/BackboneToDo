@@ -5,6 +5,7 @@
 package restlet.resources;
 
 import classes.Todo;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentMap;
 import org.json.JSONException;
@@ -80,7 +81,7 @@ public class TodoResourse  extends ServerResource{
     
     @Get("json")
     public String represent() {
-        // The GET request return resourse JSON
+        // The GET request return resourse JSON        
         return todo.toJson();
     }    
     

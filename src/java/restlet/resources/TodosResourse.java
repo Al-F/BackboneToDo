@@ -5,11 +5,14 @@
 package restlet.resources;
 
 import classes.Todo;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import java.io.IOException;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentMap;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.restlet.data.Form;
 import org.restlet.data.MediaType;
 import org.restlet.data.Status;
 import org.restlet.ext.json.JsonRepresentation;
@@ -28,7 +31,7 @@ public class TodosResourse  extends ServerResource{
         
     
      /** 
-     * Handle POST requests: create a new item. 
+     * Handle POST requests: create a new todo. 
      */  
     @Post ("json")
     public Representation acceptItem(Representation entity) throws JSONException {  
@@ -54,9 +57,17 @@ public class TodosResourse  extends ServerResource{
         return result;  
     }  
     
+     /** 
+     * Handle GET requests: return todos collection
+     */  
     @Get("json")
-    public String represent() {        
-        return "collection";
+    public String represent() throws JSONException {        
+        ConcurrentMap<Integer, Todo> map = getTodos();
+        com.google.gson.JsonArray collection = new JsonArray();
+        for(Entry<Integer, Todo> entry : map.entrySet())
+            collection.add(entry.getValue().toJsonObject());                    
+        Gson gson = new Gson();
+        return gson.toJson(collection);
     }
     
     private Todo createTodo(){
